@@ -107,7 +107,8 @@
     "welcome_message": "Hallo {name}",
     "logout": "Abmelden",
     "store_information": "Über uns",
-    "more_menu": "Mehr"
+    "more_menu": "Mehr",
+    "scanner": "Barcode Scanner"
   },
   "reviews": {
     "rating": "Bewertung",
