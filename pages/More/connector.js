@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import logout from '@shopgate/pwa-common/actions/user/logout';
 import { getMenuById } from '@shopgate/pwa-common/selectors/menu';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { QUICKLINKS_MENU } from '@shopgate/pwa-common/constants/MenuIDs';
 
 /**
@@ -22,6 +23,7 @@ const mapStateToProps = state => ({
   entries: {
     quicklinks: getMenuById(state, QUICKLINKS_MENU).entries,
   },
+  scannerAvailable: !appConfig.hasNoScanner,
 });
 
 /**

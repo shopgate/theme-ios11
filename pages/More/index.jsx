@@ -11,7 +11,10 @@ import View from 'Components/View';
 import ClientInformation from 'Components/ClientInformation';
 import Headline from 'Components/Headline';
 import List from 'Components/List';
-import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import {
+  PAGE_PATH,
+  SCANNER_PATH,
+} from '@shopgate/pwa-common/constants/RoutePaths';
 import connect from './connector';
 import UserMenu from './components/UserMenu/index';
 
@@ -23,6 +26,7 @@ class More extends Component {
     entries: PropTypes.shape(),
     isLoggedIn: PropTypes.bool,
     logout: PropTypes.func,
+    scannerAvailable: PropTypes.bool,
     user: PropTypes.shape(),
   };
 
@@ -30,6 +34,7 @@ class More extends Component {
     entries: null,
     isLoggedIn: false,
     logout: () => {},
+    scannerAvailable: true,
     user: null,
   };
 
@@ -38,7 +43,9 @@ class More extends Component {
    * @returns {JSX}
    */
   render() {
-    const { entries, isLoggedIn, logout, user } = this.props;
+    const {
+      entries, isLoggedIn, logout, user, scannerAvailable,
+    } = this.props;
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
     return (
@@ -52,11 +59,14 @@ class More extends Component {
           <List.Item title="navigation.privacy" link={`${PAGE_PATH}/privacy`} />
           <List.Item title="navigation.contact" link={`${PAGE_PATH}/imprint`} />
         </List>
-        {showQuickLinks && (
+        {(showQuickLinks || scannerAvailable) && (
           <div>
             <Headline small text="navigation.more_menu" />
             <List>
-              {entries.quicklinks.map(entry => (
+              { scannerAvailable && (
+                <List.Item title="navigation.scanner" link={SCANNER_PATH} />
+              )}
+              { showQuickLinks && entries.quicklinks.map(entry => (
                 <List.Item key={entry.url} title={entry.label} link={entry.url} />
               ))}
             </List>
