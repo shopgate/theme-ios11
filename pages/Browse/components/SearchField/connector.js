@@ -6,7 +6,8 @@
  */
 
 import { connect } from 'react-redux';
-import { setSearchPhrase } from 'Components/Navigator/action-creators';
+import setSearchSuggestionsPhrase from '@shopgate/pwa-common-commerce/search/action-creators/setSearchSuggestionsPhrase';
+import { getSearchSuggestionsPhrase } from '@shopgate/pwa-common-commerce/search/selectors';
 import submitSearch from './actions/submitSearch';
 
 /**
@@ -15,7 +16,7 @@ import submitSearch from './actions/submitSearch';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  searchPhrase: state.navigator.searchPhrase,
+  searchPhrase: getSearchSuggestionsPhrase(state),
 });
 
 /**
@@ -24,7 +25,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  setSearchPhrase: query => dispatch(setSearchPhrase(query)),
+  setSearchPhrase: query => dispatch(setSearchSuggestionsPhrase(query)),
   submitSearch: () => dispatch(submitSearch()),
 });
 

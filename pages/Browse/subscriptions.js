@@ -8,7 +8,7 @@
 import {
   routeDidEnter,
 } from '@shopgate/pwa-common/streams/history';
-import { setSearchPhrase } from 'Components/Navigator/action-creators';
+import setSearchSuggestionsPhrase from '@shopgate/pwa-common-commerce/search/action-creators/setSearchSuggestionsPhrase';
 import { BROWSE_PATH } from './constants';
 
 /**
@@ -22,5 +22,5 @@ export default function browse(subscribe) {
   /**
    * Gets triggered on entering the browse route. Resets the search phrase.
    */
-  subscribe(browseRouteDidEnter$, ({ dispatch }) => dispatch(setSearchPhrase('')));
+  subscribe(browseRouteDidEnter$, ({ dispatch }) => dispatch(setSearchSuggestionsPhrase('')));
 }

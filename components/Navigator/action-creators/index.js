@@ -12,7 +12,6 @@ import {
   TOGGLE_LOGIN,
   SET_NAVIGATOR_BACKGROUND,
   SET_NAVIGATOR_COLOR,
-  SET_NAVIGATOR_SEARCH_QUERY,
   SET_FILTER_OPENED,
   SET_FILTER_CLOSED,
   SET_FILTER_ATTRIBUTE_OPENED,
@@ -87,16 +86,6 @@ export const setBackgroundColor = color => ({
 export const setTextColor = color => ({
   type: SET_NAVIGATOR_COLOR,
   color,
-});
-
-/**
- * Sets the navigator search string.
- * @param {string} query The search string.
- * @returns {Object} The action object.
- */
-export const setSearchPhrase = query => ({
-  type: SET_NAVIGATOR_SEARCH_QUERY,
-  query,
 });
 
 /**
