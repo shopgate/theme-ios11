@@ -41,3 +41,6 @@ export const TAB_BAR_BROWSE_ICON = `${TAB_BAR}.${BROWSE_ICON}`;
 export const TAB_BAR_CART_ICON = `${TAB_BAR}.${CART_ICON}`;
 export const TAB_BAR_MORE_ICON = `${TAB_BAR}.${MORE_ICON}`;
 export const TAB_BAR_FAVORITES_ICON = `${TAB_BAR}.${FAVORITES_ICON}`;
+
+export const TAB_BAR_SHOW_ACTION = 'TAB_BAR_SHOW_ACTION';
+export const TAB_BAR_HIDE_ACTION = 'TAB_BAR_HIDE_ACTION';

@@ -24,6 +24,12 @@ import {
 } from './constants';
 
 /**
+ * Returns a tabBar state.
+ * @param {Object} state State.
+ * @return {Object}
+ */
+const getTabBarState = state => state.ui.tabBar;
+/**
  * Returns what tab is active, returns TAB_NONE if none is active.
  * @params {Object} state The application state.
  * @returns {string}
@@ -56,9 +62,13 @@ export const getActiveTab = createSelector(
  * @returns {boolean}
  */
 export const isTabBarVisible = createSelector(
+  getTabBarState,
   getHistoryPathname,
   hasFavorites,
-  (pathname, favorites) => {
+  (state, pathname, favorites) => {
+    if (state.show === false) {
+      return false;
+    }
     if (
       pathname === CART_PATH ||
       pathname.startsWith(ITEM_PATH) ||

@@ -32,6 +32,10 @@ import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
 import * as routes from './routes';
+import {
+  showTabBar,
+  hideTabBar,
+} from '../components/TabBar/actions';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -40,7 +44,14 @@ import * as routes from './routes';
 const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
     <AppContext.Provider value={{ ...appConfig }}>
-      <ThemeContext.Provider value={{}}>
+      <ThemeContext.Provider
+        value={{
+          actions: {
+            showTabBar,
+            hideTabBar,
+          },
+        }}
+      >
         <Portal name={APP_GLOBALS} />
         <Viewport>
           <ModalContainer component={Dialog} />
@@ -71,7 +82,6 @@ const Pages = () => (
             <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
             <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
           </AuthRoutes>
-          
           <Portal name={APP_ROUTES} props={{ View }} />
         </Viewport>
       </ThemeContext.Provider>
