@@ -16,3 +16,8 @@ export const selectActionCount = createSelector(
   getAddToCartBarState,
   state => state.added
 );
+
+export const shouldBeVisible = createSelector(
+  getAddToCartBarState,
+  state => state.show
+);

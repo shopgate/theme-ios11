@@ -36,6 +36,10 @@ import {
   showTabBar,
   hideTabBar,
 } from '../components/TabBar/actions';
+import {
+  showAddToCartBar,
+  hideAddToCartBar,
+} from './Product/components/AddToCartBar/actions';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -49,6 +53,8 @@ const Pages = () => (
           actions: {
             showTabBar,
             hideTabBar,
+            showAddToCartBar,
+            hideAddToCartBar,
           },
         }}
       >
