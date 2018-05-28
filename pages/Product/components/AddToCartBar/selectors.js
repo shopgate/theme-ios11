@@ -17,6 +17,11 @@ export const selectActionCount = createSelector(
   state => state.added
 );
 
+/**
+ * Returns whether the add to cart bar is visible or not.
+ * @params {Object} state The application state.
+ * @returns {boolean}
+ */
 export const shouldBeVisible = createSelector(
   getAddToCartBarState,
   state => state.show
