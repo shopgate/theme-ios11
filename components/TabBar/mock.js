@@ -6,6 +6,11 @@ export const mockedStateDefault = {
   cart: {
     items: [],
   },
+  favorites: {
+    products: {
+      ids: [1,2]
+    },
+  },
   ui: {
     tabBar: {
       show: true,
