@@ -1,6 +1,6 @@
 import {
-  TAB_BAR_HIDE_ACTION,
-  TAB_BAR_SHOW_ACTION,
+  TAB_BAR_HIDE,
+  TAB_BAR_SHOW,
 } from './constants';
 
 /**
@@ -8,7 +8,7 @@ import {
  * @return {Object}
  */
 export const showTabBar = () => ({
-  type: TAB_BAR_SHOW_ACTION,
+  type: TAB_BAR_SHOW,
 });
 
 /**
@@ -16,5 +16,5 @@ export const showTabBar = () => ({
  * @return {Object}
  */
 export const hideTabBar = () => ({
-  type: TAB_BAR_HIDE_ACTION,
+  type: TAB_BAR_HIDE,
 });

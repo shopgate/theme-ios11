@@ -1,6 +1,6 @@
 import {
-  TAB_BAR_SHOW_ACTION,
-  TAB_BAR_HIDE_ACTION,
+  TAB_BAR_SHOW,
+  TAB_BAR_HIDE,
 } from './constants';
 
 /**
@@ -13,11 +13,11 @@ import {
  */
 export default (state = { show: true }, action) => {
   switch (action.type) {
-    case TAB_BAR_SHOW_ACTION:
+    case TAB_BAR_SHOW:
       return {
         show: true,
       };
-    case TAB_BAR_HIDE_ACTION:
+    case TAB_BAR_HIDE:
       return {
         show: false,
       };
