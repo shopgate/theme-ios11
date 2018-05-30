@@ -118,6 +118,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                 name="tab-bar.home.before"
                 props={
                   Object {
+                    "TabBarAction": [Function],
                     "children": null,
                     "icon": null,
                     "isHighlighted": true,
@@ -240,6 +241,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                 name="tab-bar.home.after"
                 props={
                   Object {
+                    "TabBarAction": [Function],
                     "children": null,
                     "icon": null,
                     "isHighlighted": true,
@@ -264,6 +266,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                 name="tab-bar.browse.before"
                 props={
                   Object {
+                    "TabBarAction": [Function],
                     "children": null,
                     "icon": null,
                     "isHighlighted": false,
@@ -386,6 +389,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                 name="tab-bar.browse.after"
                 props={
                   Object {
+                    "TabBarAction": [Function],
                     "children": null,
                     "icon": null,
                     "isHighlighted": false,
@@ -538,6 +542,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                 name="tab-bar.cart.after"
                 props={
                   Object {
+                    "TabBarAction": [Function],
                     "children": null,
                     "icon": null,
                     "isHighlighted": false,
@@ -562,6 +567,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                 name="tab-bar.favorites.before"
                 props={
                   Object {
+                    "TabBarAction": [Function],
                     "children": null,
                     "icon": null,
                     "isHighlighted": false,
@@ -684,6 +690,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                 name="tab-bar.favorites.after"
                 props={
                   Object {
+                    "TabBarAction": [Function],
                     "children": null,
                     "icon": null,
                     "isHighlighted": false,
@@ -708,6 +715,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                 name="tab-bar.more.before"
                 props={
                   Object {
+                    "TabBarAction": [Function],
                     "children": null,
                     "icon": null,
                     "isHighlighted": false,
@@ -830,6 +838,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                 name="tab-bar.more.after"
                 props={
                   Object {
+                    "TabBarAction": [Function],
                     "children": null,
                     "icon": null,
                     "isHighlighted": false,
