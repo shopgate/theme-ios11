@@ -1,7 +1,7 @@
 import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
 import { getQueryParams } from '@shopgate/pwa-common/selectors/history';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { getSearchPhrase } from 'Components/Navigator/selectors';
+import { getSearchSuggestionsPhrase } from '@shopgate/pwa-common-commerce/search/selectors';
 
 /**
  * Performs appropriate action(s) when UI search gets triggered.
@@ -16,7 +16,7 @@ const submitSearch = () => (dispatch, getState) => {
     pathname: SEARCH_PATH,
     params: {
       ...otherParams,
-      s: getSearchPhrase(state),
+      s: getSearchSuggestionsPhrase(state),
     },
   };
 
