@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import fetchSearchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
-import { setSearchPhrase } from 'Components/Navigator/action-creators';
+import setSearchSuggestionsPhrase from '@shopgate/pwa-common-commerce/search/action-creators/setSearchSuggestionsPhrase';
 import {
   getCurrentSearchSuggestions,
-  getSearchPhrase,
+  getSearchSuggestionsPhrase,
   isFetchingCurrentSearchSuggestions,
 } from '@shopgate/pwa-common-commerce/search/selectors';
 import submitSearch from '../../actions/submitSearch';
@@ -14,7 +14,7 @@ import submitSearch from '../../actions/submitSearch';
  * @return {Object} Enriched component props.
  */
 const mapStateToProps = state => ({
-  searchPhrase: getSearchPhrase(state),
+  searchPhrase: getSearchSuggestionsPhrase(state),
   suggestions: getCurrentSearchSuggestions(state),
   isFetching: isFetchingCurrentSearchSuggestions(state),
 });
@@ -26,7 +26,7 @@ const mapStateToProps = state => ({
  */
 const mapDispatchToProps = dispatch => ({
   fetchSearchSuggestions: () => dispatch(fetchSearchSuggestions()),
-  setSearchPhrase: searchPhrase => dispatch(setSearchPhrase(searchPhrase)),
+  setSearchPhrase: searchPhrase => dispatch(setSearchSuggestionsPhrase(searchPhrase)),
   submitSearch: () => dispatch(submitSearch()),
 });
 

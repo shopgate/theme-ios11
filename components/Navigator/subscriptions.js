@@ -7,8 +7,9 @@ import {
   routeDidLeave,
 } from '@shopgate/pwa-common/streams/history';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
+import setSearchPhrase from '@shopgate/pwa-common-commerce/search/action-creators/setSearchSuggestionsPhrase';
+import { getSearchSuggestionsPhrase } from '@shopgate/pwa-common-commerce/search/selectors';
 import toggleNavSearchField from 'Components/Navigator/actions/toggleNavSearchField';
-import { setSearchPhrase } from './action-creators';
 import enableNavigatorSearch from './actions/enableNavigatorSearch';
 import disableNavigatorSearch from './actions/disableNavigatorSearch';
 import toggleCartIcon from './actions/toggleCartIcon';
@@ -39,7 +40,7 @@ export default function navigator(subscribe) {
     const state = getState();
 
     // If search input is empty, set it to the value of the search query param.
-    if (!state.navigator.searchPhrase) {
+    if (!getSearchSuggestionsPhrase(state)) {
       dispatch(setSearchPhrase(getSearchPhrase(state)));
     }
   });
