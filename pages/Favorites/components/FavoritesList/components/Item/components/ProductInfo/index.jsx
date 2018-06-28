@@ -9,6 +9,7 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import ProductCharacteristics from '@shopgate/pwa-ui-shared/ProductCharacteristics';
 import AvailableText from '@shopgate/pwa-ui-shared/Availability';
 import Price from './components/Price';
+import FavoriteToCartButton from './components/FavoriteToCartButton';
 import styles from './style';
 
 /**
@@ -20,21 +21,24 @@ const ProductInfo = ({ product }) => {
   const props = { product };
   return (
     <Fragment>
-      <Portal name={portals.FAVORITES_PRODUCT_NAME_BEFORE} props={props} />
-      <Portal name={portals.FAVORITES_PRODUCT_NAME} props={props}>
-        <div className={styles.name}>
-          <Link
-            tagName="a"
-            href={`${ITEM_PATH}/${bin2hex(product.baseProductId || product.id)}`}
-            itemProp="item"
-            itemScope
-            itemType="http://schema.org/Product"
-          >
-            {product.name}
-          </Link>
-        </div>
-      </Portal>
-      <Portal name={portals.FAVORITES_PRODUCT_NAME_AFTER} props={props} />
+      <div className={styles.nameFavoriteConrainer}>
+        <Portal name={portals.FAVORITES_PRODUCT_NAME_BEFORE} props={props} />
+        <Portal name={portals.FAVORITES_PRODUCT_NAME} props={props}>
+          <div className={styles.name}>
+            <Link
+              tagName="a"
+              href={`${ITEM_PATH}/${bin2hex(product.baseProductId || product.id)}`}
+              itemProp="item"
+              itemScope
+              itemType="http://schema.org/Product"
+            >
+              {product.name}
+            </Link>
+          </div>
+        </Portal>
+        <Portal name={portals.FAVORITES_PRODUCT_NAME_AFTER} props={props} />
+        <FavoriteToCartButton productId={product.id} />
+      </div>
       <Grid className={styles.detailsRow}>
         <Grid.Item className={styles.propertiesContainer}>
           <ProductCharacteristics characteristics={product.characteristics} />

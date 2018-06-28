@@ -7,6 +7,7 @@ const name = css({
   marginBottom: '1em',
   wordBreak: ['keep-all', 'break-word'],
   hyphens: 'auto',
+  marginRight: '10%',
 }).toString();
 
 const propertiesContainer = css({
@@ -22,6 +23,12 @@ const priceContainer = css({
   fontSize: 14,
 }).toString();
 
+const nameFavoriteConrainer = css({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+}).toString();
+
 const detailsRow = css({
   justifyContent: 'space-between',
   alignItems: 'flex-end',
@@ -32,4 +39,5 @@ export default {
   name,
   priceContainer,
   propertiesContainer,
+  nameFavoriteConrainer,
 };

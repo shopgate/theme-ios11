@@ -4,10 +4,11 @@ import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import Swiper from 'react-id-swiper';
 import CardItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
-import CTAButtons from './components/CTAButtons';
 import Image from './components/Image';
 import ProductInfo from './components/ProductInfo';
+import RemoveArea from './components/ProductInfo/components/RemoveArea';
 import styles from './style';
 
 /**
@@ -28,7 +29,10 @@ class Item extends Component {
     super(props);
     this.state = {
       visible: true,
+      marginLeft: '0px',
+      showRemove: false,
     };
+    this.swiper = null;
   }
 
   /**
@@ -61,6 +65,23 @@ class Item extends Component {
     this.refElement = element;
   };
 
+  handleTouchEnd = () => {
+    if (this.swiper.translate < 0) {
+      this.setState({
+        marginLeft: '-100px',
+        showRemove: true,
+      });
+    } else {
+      this.setState({
+        marginLeft: '0px',
+        showRemove: false,
+      });
+    }
+  }
+
+  handleRemove = () => {
+  }
+
   /**
    * Renders favorite list item
    * @returns {XML}
@@ -79,25 +100,20 @@ class Item extends Component {
               styles.getFavItemTransitionStyle(state, this.state.visible, this.height)
             }
           >
-            <Grid className={styles.row}>
-              <Grid.Item className={styles.leftColumn}>
-                <Image product={this.props.product} />
-                <CTAButtons
-                  productId={this.props.product.id}
-                  active={this.state.visible}
-                  removeThrottle={styles.favItemTransitionDuration + 200}
-                  onRippleComplete={(active) => {
-                    this.setState({
-                      visible: active,
-                    });
-                  }}
-                  favoritesOnce
-                />
-              </Grid.Item>
-              <Grid.Item grow={1} className={styles.rightColumn}>
-                <ProductInfo product={this.props.product} />
-              </Grid.Item>
-            </Grid>
+            <Swiper
+              onInit={(swiper) => { this.swiper = swiper; }}
+              onTouchEnd={() => this.handleTouchEnd()}
+            >
+              <Grid style={{ marginLeft: this.state.marginLeft }} className={styles.row}>
+                <Grid.Item className={styles.leftColumn}>
+                  <Image product={this.props.product} />
+                </Grid.Item>
+                <Grid.Item grow={1} className={styles.rightColumn}>
+                  <ProductInfo product={this.props.product} />
+                </Grid.Item>
+              </Grid>
+              <RemoveArea productId={this.props.product.id} show={this.state.showRemove} />
+            </Swiper>
           </CardItem>
         )}
       </Transition>

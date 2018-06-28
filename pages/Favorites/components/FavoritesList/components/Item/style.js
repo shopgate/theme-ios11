@@ -4,7 +4,7 @@ import variables from 'Styles/variables';
 const favItemTransitionDuration = 500;
 
 const row = css({
-  padding: variables.gap.big,
+  padding: variables.gap.small,
   justifyContent: 'space-between',
 }).toString();
 
