@@ -22,9 +22,7 @@ class View extends Component {
     navigatorTitle: PropTypes.string.isRequired,
     setTitle: PropTypes.func.isRequired,
     setTop: PropTypes.func.isRequired,
-    considerPaddingTop: PropTypes.bool,
     hasNavigator: PropTypes.bool,
-    hasTabBar: PropTypes.bool,
     head: PropTypes.shape({
       meta: PropTypes.array,
       link: PropTypes.array,
@@ -39,9 +37,7 @@ class View extends Component {
   };
 
   static defaultProps = {
-    considerPaddingTop: false,
     hasNavigator: true,
-    hasTabBar: true,
     head: {
       meta: [],
       link: [],
@@ -224,7 +220,6 @@ class View extends Component {
     const contentStyle = styles.content(
       this.props.hasNavigator,
       this.props.isFullscreen,
-      this.props.considerPaddingTop && this.props.hasTabBar,
       this.state.noScroll
     );
 
@@ -242,25 +237,27 @@ class View extends Component {
             ref={this.setRef}
             onScroll={this.handleScroll}
           >
-            {this.renderMetaTags()}
-            {React.Children.map(children, (child) => {
-              /**
-               * Inject a viewRef prop into all of the children
-               * to give them access to the <article> ref.
-               */
-              if (!child) {
-                return null;
-              }
+            <div className={styles.padding}>
+              {this.renderMetaTags()}
+              {React.Children.map(children, (child) => {
+                /**
+                 * Inject a viewRef prop into all of the children
+                 * to give them access to the <article> ref.
+                 */
+                if (!child) {
+                  return null;
+                }
 
-              // Just return the child if it is not a React component.
-              if (typeof child.type === 'string') {
-                return child;
-              }
+                // Just return the child if it is not a React component.
+                if (typeof child.type === 'string') {
+                  return child;
+                }
 
-              return React.cloneElement(child, {
-                ...this.element && { viewRef: this.element },
-              });
-            })}
+                return React.cloneElement(child, {
+                  ...this.element && { viewRef: this.element },
+                });
+              })}
+            </div>
           </article>
         </Swipeable>
       </section>
