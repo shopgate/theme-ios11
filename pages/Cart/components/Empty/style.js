@@ -7,7 +7,7 @@ const wrapper = css({
   flexDirection: 'column',
   background: colors.shade8,
   textAlign: 'center',
-  height: '100%',
+  height: `calc(100vh - ${variables.navbar.height}px - var(--safe-area-inset-top))`,
 }).toString();
 
 const container = css({
