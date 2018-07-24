@@ -14,15 +14,12 @@ const container = css({
  * @param {boolean} hasNavigator Whether to add the top offset when the navigator is visible.
  * @param {boolean} isFullscreen Whether remove all offsets,
  *                  so that it's really fullscreen (including the notch).
- * @param {boolean} considerPaddingTop Whether to consider the natively set inset
- *                  and compensate itor not.
  * @param {boolean} noScroll Wheather the view should be scrollable or not.
  * @return {string} The content style class.
  */
 const content = (
   hasNavigator = true,
   isFullscreen = false,
-  considerPaddingTop = false,
   noScroll = false
 ) => {
   const navHeight = hasNavigator ? variables.navbar.height : 0;
@@ -37,16 +34,16 @@ const content = (
     top: isFullscreen ? 0 : `calc(${navHeight}px + var(--safe-area-inset-top))`,
     display: 'flex',
     flexDirection: 'column',
-    paddingBottom: 'calc(var(--tabbar-height) + var(--safe-area-inset-bottom))',
     bottom: 0,
-    ...considerPaddingTop && {
-      marginBottom: 'calc(var(--tabbar-height) + var(--safe-area-inset-bottom))',
-      bottom: -24,
-    },
   }).toString();
 };
+
+const padding = css({
+  paddingBottom: 'calc(var(--tabbar-height) + var(--safe-area-inset-bottom))',
+});
 
 export default {
   container,
   content,
+  padding,
 };

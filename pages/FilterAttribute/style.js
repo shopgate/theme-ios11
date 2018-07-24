@@ -5,6 +5,7 @@ export default css({
   background: colors.background,
   flexGrow: 1,
   paddingTop: 4,
+  height: '100vh',
   paddingBottom: [
     '4px',
     'calc(4px + var(--safe-area-inset-bottom))',

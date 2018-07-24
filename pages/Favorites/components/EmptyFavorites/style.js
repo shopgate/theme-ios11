@@ -3,6 +3,7 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
+  height: `calc(100vh - ${variables.navbar.height}px - var(--safe-area-inset-top))`,
   background: colors.background,
   flexGrow: 1,
   padding: variables.gap.big,

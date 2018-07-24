@@ -2,6 +2,7 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 
 const container = css({
+  height: '100vh',
   background: colors.background,
   flexGrow: 1,
   paddingTop: 4,
