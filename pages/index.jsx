@@ -1,8 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import Route from '@shopgate/pwa-common/components/Router/components/Route';
-import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import App from '@shopgate/pwa-common/App';
 import {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navigator from 'Components/Navigator';
-import TabBar from 'Components/TabBar';
+// import Navigator from 'Components/Navigator';
+// import TabBar from 'Components/TabBar';
 import styles from './style';
 
 /**
@@ -11,7 +11,7 @@ import styles from './style';
  */
 const Viewport = props => (
   <main className={styles} role="main" itemScope itemProp="http://schema.org/MobileApplication">
-  {/*<Navigator />*/}
+    {/*<Navigator />*/}
     {props.children}
     {/*<TabBar />*/}
   </main>
