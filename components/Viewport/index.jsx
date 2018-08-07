@@ -11,9 +11,9 @@ import styles from './style';
  */
 const Viewport = props => (
   <main className={styles} role="main" itemScope itemProp="http://schema.org/MobileApplication">
-    <Navigator />
+  {/*<Navigator />*/}
     {props.children}
-    <TabBar />
+    {/*<TabBar />*/}
   </main>
 );
 

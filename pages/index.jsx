@@ -31,21 +31,23 @@ import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
-import * as routes from './routes';
+// import * as routes from './routes';
+import Worker from './worker';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
  */
 const Pages = () => (
-  <App locale={locale} reducers={reducers} subscribers={subscribers}>
+    <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
     <AppContext.Provider value={{ ...appConfig }}>
-      <ThemeContext.Provider value={{}}>
+      <ThemeContext.Provider value={{ View }}>
         <Portal name={APP_GLOBALS} />
         <Viewport>
           <ModalContainer component={Dialog} />
           <SnackBar />
-
+          <div>Hello World!</div>
+          {/*
           <Route path={`${INDEX_PATH}`} component={routes.Page} />
           <Route path={`${PAGE_PATH}/:pageId`} component={routes.Page} />
           <Route path={`${CATEGORY_PATH}`} component={routes.Category} />
@@ -73,6 +75,7 @@ const Pages = () => (
           </AuthRoutes>
           
           <Portal name={APP_ROUTES} props={{ View }} />
+          */}
         </Viewport>
       </ThemeContext.Provider>
     </AppContext.Provider>
