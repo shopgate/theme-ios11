@@ -25,7 +25,6 @@ import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals'
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
-import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
@@ -43,7 +42,6 @@ const Pages = () => (
         <Portal name={APP_GLOBALS} />
         <Viewport>
           <ModalContainer component={Dialog} />
-          <SnackBar />
           <div>Hello World!</div>
           {/*
           <Route path={`${INDEX_PATH}`} component={routes.Page} />
