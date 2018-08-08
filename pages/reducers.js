@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
+import persistReducers from '@shopgate/pwa-common/collections/PersistedReducers';
 import client from '@shopgate/pwa-common/reducers/client';
-import history from '@shopgate/pwa-common/reducers/history';
 import url from '@shopgate/pwa-common/reducers/url';
 import user from '@shopgate/pwa-common/reducers/user';
 import page from '@shopgate/pwa-common/reducers/page';
@@ -14,21 +14,27 @@ import filter from '@shopgate/pwa-common-commerce/filter/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
-import toast from '@shopgate/pwa-common/reducers/toast';
 import navigator from 'Components/Navigator/reducer';
 import extentions from 'Extensions/reducers';
 import addToCartBar from 'Pages/Product/components/AddToCartBar/reducer';
 import general from 'Components/View/reducer';
 import tabBar from 'Components/TabBar/reducer';
 
-const reducers = {
+persistReducers.set([
+  'cart',
+  'client',
+  'page',
+  'url',
+  'user',
+]);
+
+const reducers = combineReducers({
   cart,
   category,
   client,
   ...extentions && { extensions: combineReducers(extentions) },
   favorites,
   filter,
-  history,
   menu,
   modal,
   navigator,
@@ -36,7 +42,6 @@ const reducers = {
   product,
   reviews,
   search,
-  toast,
   ui: combineReducers({
     general,
     addToCartBar,
@@ -45,6 +50,6 @@ const reducers = {
   url,
   user,
   view,
-};
+});
 
 export default reducers;

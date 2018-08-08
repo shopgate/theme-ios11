@@ -1,8 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import Route from '@shopgate/pwa-common/components/Router/components/Route';
-import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import App from '@shopgate/pwa-common/App';
 import {
@@ -27,25 +25,25 @@ import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals'
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
-import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
-import * as routes from './routes';
+// import * as routes from './routes';
+import Worker from './worker';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
  */
 const Pages = () => (
-  <App locale={locale} reducers={reducers} subscribers={subscribers}>
+    <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
     <AppContext.Provider value={{ ...appConfig }}>
-      <ThemeContext.Provider value={{}}>
+      <ThemeContext.Provider value={{ View }}>
         <Portal name={APP_GLOBALS} />
         <Viewport>
           <ModalContainer component={Dialog} />
-          <SnackBar />
-
+          <div>Hello World!</div>
+          {/*
           <Route path={`${INDEX_PATH}`} component={routes.Page} />
           <Route path={`${PAGE_PATH}/:pageId`} component={routes.Page} />
           <Route path={`${CATEGORY_PATH}`} component={routes.Category} />
@@ -73,6 +71,7 @@ const Pages = () => (
           </AuthRoutes>
           
           <Portal name={APP_ROUTES} props={{ View }} />
+          */}
         </Viewport>
       </ThemeContext.Provider>
     </AppContext.Provider>
