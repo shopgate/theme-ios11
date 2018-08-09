@@ -109,12 +109,13 @@ class ProductImage extends Component {
         </div>
       );
     }
-    // TODO check classes
+
     if (this.props.optimizedImages) {
       return (
         <Picture sources={this.props.optimizedImages} alt={this.props.alt} square />
       );
     }
+
     const classes = classNames(
       styles.container,
       this.props.classNames.container
