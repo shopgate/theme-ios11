@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
 import Image from '@shopgate/pwa-common/components/Image';
+import Picture, { SourceSetType } from '@shopgate/pwa-ui-shared/Picture';
 import BackButton from './components/BackButton';
 import ZoomPanSlider from './components/ZoomPanSlider';
 import connect from './connector';
@@ -18,12 +19,14 @@ class ProductGallery extends Component {
     params: PropTypes.shape().isRequired,
     images: PropTypes.arrayOf(PropTypes.string),
     initialSlide: PropTypes.number,
+    optimizedImages: PropTypes.arrayOf(SourceSetType),
     product: PropTypes.shape(),
   };
 
   static defaultProps = {
     images: null,
     initialSlide: 0,
+    optimizedImages: null,
     product: null,
   };
 
@@ -76,16 +79,27 @@ class ProductGallery extends Component {
               indicators
               loop
             >
-              {this.props.images.map(imageSrc => (
-                <div className={styles.slide} key={imageSrc}>
-                  <Image
-                    src={imageSrc}
-                    resolutions={resolutions}
-                    backgroundColor="none"
-                    className={styles.image}
-                  />
-                </div>
-              ))}
+              {
+                this.props.optimizedImages ?
+                  this.props.optimizedImages.map(image => (
+                    <div className={styles.slide} key={image.png}>
+                      <Picture
+                        imgClassName={styles.image}
+                        sources={image}
+                      />
+                    </div>
+                  ))
+                  : this.props.images.map(imageSrc => (
+                    <div className={styles.slide} key={imageSrc}>
+                      <Image
+                        src={imageSrc}
+                        resolutions={resolutions}
+                        backgroundColor="none"
+                        className={styles.image}
+                      />
+                    </div>
+                  ))
+              }
             </ZoomPanSlider>
           )}
         </div>
