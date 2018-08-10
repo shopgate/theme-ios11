@@ -9,21 +9,21 @@
   "license": "Apache-2.0",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
-    "precommit": "lint-staged",
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "e2e": "cypress open -P ./e2e"
   },
-  "lint-staged": {
-    "concurrent": false,
-    "linters": {
-      "*.js": "npm run lint"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
   },
-  "pre-commit": [
-    "precommit"
-  ],
+  "lint-staged": {
+    "linters": {
+      "*.{js,jsx}": "yarn run lint"
+    }
+  },
   "dependencies": {
     "@shopgate/pwa-common": "5.6.0",
     "@shopgate/pwa-common-commerce": "5.6.0",
@@ -80,8 +80,9 @@
     "eslint": "^4.17.0",
     "eslint-import-resolver-babel-module": "4.0.0",
     "eslint-plugin-import": "^2.7.0",
+    "husky": "^1.0.0-rc.13",
     "jest": "^22.4.2",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^7.2.0",
     "nyc": "^11.8.0",
     "react-addons-test-utils": "^15.6.2",
     "react-transform-catch-errors": "^1.0.2",
