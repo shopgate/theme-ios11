@@ -21,6 +21,7 @@
           "Config": "./config",
           "Extensions": "./extensions",
           "Pages": "./pages",
+          "Refs": "./refs",
           "Styles": "./styles"
         }
       }

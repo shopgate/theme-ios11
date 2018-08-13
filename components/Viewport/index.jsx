@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navigator from 'Components/Navigator';
-import TabBar from 'Components/TabBar';
+// import Navigator from 'Components/Navigator';
+import TabBar from 'Components/TabBar2';
 import styles from './style';
 
 /**

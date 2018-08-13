@@ -38,7 +38,7 @@ import * as routes from './routes';
  * @returns {JSX}
  */
 const Pages = () => (
-  <App locale={locale} reducers={reducers} subscribers={subscribers}>
+  <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
     <AppContext.Provider value={{ ...appConfig }}>
       <ThemeContext.Provider value={{}}>
         <Portal name={APP_GLOBALS} />
