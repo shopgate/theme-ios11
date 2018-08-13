@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import { history } from '@shopgate/pwa-common/helpers/router';
-import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import variables from 'Styles/variables';
 import parseHTML from '@shopgate/pwa-common/helpers/html/parseHTML';
 import { handleYouTube } from '@shopgate/pwa-common/helpers/html/handleDOM';
 import styles from './style';
+import connect from './connector';
 
 /**
  * The custom HTML widget.
@@ -99,11 +98,8 @@ class Html extends Component {
     const aTag = e.target.closest('a');
 
     if (aTag && aTag.attributes.href) {
-      const href = aTag.attributes.href.value;
-      const link = new ParsedLink(href);
-
       e.preventDefault();
-      link.open(history);
+      this.props.navigate(aTag.attributes.href.value);
     }
   };
 
