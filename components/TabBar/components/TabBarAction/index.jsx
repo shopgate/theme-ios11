@@ -34,6 +34,7 @@ const TabBarAction = (props) => {
 };
 
 TabBarAction.propTypes = {
+  historyPush: PropTypes.func.isRequired,
   label: PropTypes.node.isRequired,
   children: PropTypes.node,
   icon: PropTypes.element,

@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import BrowseIcon from '@shopgate/pwa-ui-shared/icons/BrowseIcon';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
+import connect from '../connector';
 import styles from './style';
 
 /**
@@ -27,8 +27,7 @@ class TabBarBrowseAction extends Component {
       return;
     }
 
-    const link = new ParsedLink(BROWSE_PATH);
-    link.open();
+    this.props.historyPush(BROWSE_PATH);
   };
 
   /**
@@ -74,4 +73,4 @@ class TabBarBrowseAction extends Component {
   }
 }
 
-export default TabBarBrowseAction;
+export default connect(TabBarBrowseAction);
