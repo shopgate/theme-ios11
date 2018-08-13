@@ -7,6 +7,7 @@ import CartIcon from '@shopgate/pwa-ui-ios/icons/CartIcon';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import CartItemBadge from './components/CartItemBadge';
+import connect from '../connector';
 import styles from './style';
 
 /**
@@ -27,6 +28,8 @@ class TabBarCartAction extends Component {
     if (this.props.path === CART_PATH) {
       return;
     }
+
+    this.props.historyPush(CART_PATH);
 
     const link = new ParsedLink(CART_PATH);
     link.open();
@@ -71,4 +74,4 @@ class TabBarCartAction extends Component {
   }
 }
 
-export default TabBarCartAction;
+export default connect(TabBarCartAction);
