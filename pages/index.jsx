@@ -1,7 +1,11 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
+import Router from '@virtuous/react-conductor/Router';
+import Route from '@virtuous/react-conductor/Route';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
@@ -20,6 +24,8 @@ import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import Toaster from '@shopgate/pwa-common/components/Toaster';
+import SnackBar from '@shopgate/pwa-ui-material/SnackBar';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
@@ -28,7 +34,7 @@ import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
-// import * as routes from './routes';
+import * as routes from './routes';
 import Worker from './worker';
 
 /**
@@ -36,43 +42,50 @@ import Worker from './worker';
  * @returns {JSX}
  */
 const Pages = () => (
-    <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
+  <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
     <AppContext.Provider value={{ ...appConfig }}>
       <ThemeContext.Provider value={{ View }}>
-        <Portal name={APP_GLOBALS} />
-        <Viewport>
-          <ModalContainer component={Dialog} />
-          <div>Hello World!</div>
-          {/*
-          <Route path={`${INDEX_PATH}`} component={routes.Page} />
-          <Route path={`${PAGE_PATH}/:pageId`} component={routes.Page} />
-          <Route path={`${CATEGORY_PATH}`} component={routes.Category} />
-          <Route path={`${CATEGORY_PATH}/:categoryId?/:selection?`} component={routes.Category} />
-          <Route path={`${FILTER_PATH}`} component={routes.Filter} />
-          <Route path={`${FILTER_PATH}/:attribute`} component={routes.FilterAttribute} />
-          <Route path={`${ITEM_PATH}/:productId`} component={routes.Product} />
-          <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={routes.ProductGallery} />
-          <Route path={`${ITEM_PATH}/:productId/reviews/`} component={routes.Reviews} />
-          <Route path={`${CART_PATH}`} component={routes.Cart} />
-          {
-            appConfig.hasFavorites
-            && <Route path={`${FAVORITES_PATH}`} component={routes.Favorites} />
-          }
-          <Route path={`${SEARCH_PATH}`} component={routes.Search} />
-          <Route path={`${LOGIN_PATH}`} component={routes.Login} />
-          <Route path={`${REGISTER_PATH}`} />
-          <Route path={`${MORE_PATH}`} component={routes.More} />
-          <Route path={`${BROWSE_PATH}`} component={routes.Browse} />
+        <ToastProvider>
+          <Portal name={APP_GLOBALS} />
+          <Viewport>
+            <ModalContainer component={Dialog} />
+            <Toaster render={props => <SnackBar {...props} />} />
+            <Router>
+              <Route pattern={INDEX_PATH} component={routes.StartPage} />
+              <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
+            {/*
+            <Route path={`${INDEX_PATH}`} component={routes.Page} />
+            <Route path={`${PAGE_PATH}/:pageId`} component={routes.Page} />
+            <Route path={`${CATEGORY_PATH}`} component={routes.Category} />
+            <Route path={`${CATEGORY_PATH}/:categoryId?/:selection?`} component={routes.Category} />
+            <Route path={`${FILTER_PATH}`} component={routes.Filter} />
+            <Route path={`${FILTER_PATH}/:attribute`} component={routes.FilterAttribute} />
+            <Route path={`${ITEM_PATH}/:productId`} component={routes.Product} />
+            <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={routes.ProductGallery} />
+            <Route path={`${ITEM_PATH}/:productId/reviews/`} component={routes.Reviews} />
+            <Route path={`${CART_PATH}`} component={routes.Cart} />
+            {
+              appConfig.hasFavorites
+              && <Route path={`${FAVORITES_PATH}`} component={routes.Favorites} />
+            }
+            <Route path={`${SEARCH_PATH}`} component={routes.Search} />
+            <Route path={`${LOGIN_PATH}`} component={routes.Login} />
+            <Route path={`${REGISTER_PATH}`} />
+            <Route path={`${MORE_PATH}`} component={routes.More} />
+            <Route path={`${BROWSE_PATH}`} component={routes.Browse} />
 
-          <AuthRoutes to={`${LOGIN_PATH}`}>
-            <Route path={`${CHECKOUT_PATH}`} component={routes.Checkout} />
-            <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
-            <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
-          </AuthRoutes>
-          
-          <Portal name={APP_ROUTES} props={{ View }} />
-          */}
-        </Viewport>
+            <AuthRoutes to={`${LOGIN_PATH}`}>
+              <Route path={`${CHECKOUT_PATH}`} component={routes.Checkout} />
+              <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
+              <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
+            </AuthRoutes>
+
+            <Portal name={APP_ROUTES} props={{ View }} />
+            */}
+              {React.Children.map(routePortals, Component => Component)}
+            </Router>
+          </Viewport>
+        </ToastProvider>
       </ThemeContext.Provider>
     </AppContext.Provider>
   </App>

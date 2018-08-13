@@ -1,7 +1,8 @@
 // PWA Common
 import commonApp from '@shopgate/pwa-common/subscriptions/app';
-// import commonUser from '@shopgate/pwa-common/subscriptions/user';
-// import commonHistory from '@shopgate/pwa-common/subscriptions/history';
+import commonUser from '@shopgate/pwa-common/subscriptions/user';
+import commonHistory from '@shopgate/pwa-common/subscriptions/history';
+import commonRouter from '@shopgate/pwa-common/subscriptions/router';
 // import commonMenu from '@shopgate/pwa-common/subscriptions/menu';
 // // PWA Common Commerce
 // import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
@@ -32,6 +33,9 @@ import commonApp from '@shopgate/pwa-common/subscriptions/app';
 // import login from 'Pages/Login/subscriptions';
 // import product from 'Pages/Product/subscriptions';
 // import addToCartBar from 'Pages/Product/components/AddToCartBar/subscriptions';
+import app from 'Pages/subscriptions';
+import startPage from 'Pages/StartPage/subscriptions';
+import page from 'Pages/Page/subscriptions';
 // import search from 'Pages/Search/subscriptions';
 // import reviews from 'Pages/Reviews/subscriptions';
 // import filterbar from 'Components/FilterBar/subscriptions';
@@ -44,8 +48,9 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 const subscriptions = [
   // Common subscribers.
   commonApp,
-  // commonHistory,
-  // commonUser,
+  commonHistory,
+  commonUser,
+  commonRouter,
   // commonMenu,
   // Common Commerce subscribers.
   // commerceCart,
@@ -77,6 +82,9 @@ const subscriptions = [
   // login,
   // product,
   // addToCartBar,
+  app,
+  startPage,
+  page,
   // search,
   // reviews,
   // writeReview,
