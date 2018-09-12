@@ -25,6 +25,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     loop={true}
     maxIndicators={null}
     onSlideChange={null}
+    preloadImages={true}
     slidesPerView={1}
     snapItems={true}
   >
@@ -62,6 +63,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                 }
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
+                optimizedImages={null}
                 ratio={null}
                 resolutions={
                   Array [
@@ -167,6 +169,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                 }
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
+                optimizedImages={null}
                 ratio={null}
                 resolutions={
                   Array [
@@ -265,6 +268,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
     loop={true}
     maxIndicators={null}
     onSlideChange={null}
+    preloadImages={true}
     slidesPerView={1}
     snapItems={true}
   >
@@ -302,6 +306,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
                 }
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
+                optimizedImages={null}
                 ratio={null}
                 resolutions={
                   Array [

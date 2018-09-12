@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import Image from '@shopgate/pwa-common/components/Image';
+import Picture, { SourceSetType } from '@shopgate/pwa-ui-shared/Picture';
 import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import colors from 'Styles/colors';
 import styles from './style';
@@ -24,6 +25,7 @@ class ProductImage extends Component {
     classNames: PropTypes.objectOf(PropTypes.string),
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
+    optimizedImages: SourceSetType,
     ratio: PropTypes.arrayOf(PropTypes.number),
     resolutions: PropTypes.arrayOf(PropTypes.shape({
       width: PropTypes.number.isRequired,
@@ -43,6 +45,7 @@ class ProductImage extends Component {
       imageContainer: null,
     },
     highestResolutionLoaded: () => { },
+    optimizedImages: null,
     ratio: null,
     resolutions: [
       {
@@ -104,6 +107,12 @@ class ProductImage extends Component {
             <Placeholder className={styles.placeholder} />
           </div>
         </div>
+      );
+    }
+
+    if (this.props.optimizedImages) {
+      return (
+        <Picture sources={this.props.optimizedImages} alt={this.props.alt} square />
       );
     }
 
